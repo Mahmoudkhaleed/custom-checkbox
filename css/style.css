@@ -1,0 +1,111 @@
+:root {
+  --main-purple-color: #5c48f1;
+  --elements-background-color: #eeecfd;
+  --element-border-color: #e0e0e1;
+}
+*{
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: capitalize
+}
+.container{
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+h3{
+  background-color: var(--elements-background-color);
+  text-align: center;
+  color: var(--main-purple-color);
+  padding: 20px 0;
+}
+.container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px auto;
+}
+
+.container .box{
+  position: relative;
+  display: block;
+  text-align: center;
+  border: 2px solid var(--element-border-color);
+  padding: 15px;
+  border-radius: 6px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.container input:checked + .box{
+  background-color: var(--elements-background-color);
+  border-color: var(--main-purple-color);
+}
+.container .box span::after{
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--element-border-color);
+  transition: all 0.3s;
+  border-radius: 4px
+}
+.container input{
+  display: none;
+  appearance: none
+}
+.container .box span::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background-color: var(--main-purple-color);
+  transition: all 0.3s;
+  opacity: 0;
+}
+.container .box:hover span::after,.container input:checked + .box span::after {
+  border-color: var(--main-purple-color)
+}
+.container input:not(:checked) + .box span::after{
+  border-color: var(--element-border-color);
+}
+.container input:checked + .box span::before{
+  opacity: 1;
+}
+
+.container .box:hover span::before {
+  opacity: .3;
+}
+.container .box i{
+  font-size: 70px;
+  color: var(--main-purple-color);
+  margin-bottom: 15px;
+}
+.container .box i,.container .box span{
+  display: block;
+}
